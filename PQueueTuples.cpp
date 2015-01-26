@@ -1,6 +1,6 @@
 // Copyright 2015 Aman Mishra
 // ============================================================================
-// Name        : PQueueSort.cpp
+// Name        : PQueueTuples.cpp
 // Author      : Aman Mishra
 // Description : Using a priority queue with the std::tuple class
 // ============================================================================
