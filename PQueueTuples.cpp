@@ -7,11 +7,11 @@
 
 #include <iostream>
 #include <queue>
-#include <algorithm>
 #include <cstdlib>
 #include <functional>
 #include <vector>
 #include <tuple>
+#include <ctime>
 
 // Comparison function type
 typedef bool (*comp)(std::tuple<int, int>, std::tuple<int, int>);
@@ -31,16 +31,15 @@ int main() {
    * whereas the type is fed into the template parameter list.
    */
   std::priority_queue<std::tuple<int, int>,
-                      std::vector<std::tuple<int, int>>,
-                      comp> mypq(&compare);
+                      std::vector<std::tuple<int, int>>, comp> mypq(&compare);
   /*
    * Generating tuples. Note, the tuples will be ordered as a min heap
    * by their weight because of the compare function used.
    */
   for (int i = 0; i < 10; i++) {
     auto a = std::make_tuple(i+1, i);
-    std::cout << std::get<0> (a) << " , ";
-    std::cout << std::get<1> (a) << std::endl;
+    std::cout << "Vertex " << std::get<1> (a) << " , ";
+    std::cout << "Weight " << std::get<0> (a) << std::endl;
     mypq.push(a);
   }
 
@@ -81,7 +80,7 @@ int main() {
       std::cout << "Vertex " << std::get<1> (temp) << ' ';
       std::cout << "Weight " << std::get<0> (temp) << std::endl;
     } else {
-      auto a = std::make_tuple(std::get<1> (temp) + delta_arr[std::get<1> (temp)],
+      auto a = std::make_tuple(std::get<0> (temp) + delta_arr[std::get<1> (temp)],
                                 std::get<1> (temp));
 
       delta_arr[std::get<1> (temp)] = 0;
